@@ -226,7 +226,7 @@ class Configuration
      *
      * @return string Access token for OAuth
      */
-    public function getApiAuthKey()
+    public function getAuthApiKey()
     {
         return $this->apiKey;
     }
