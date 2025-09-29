@@ -67,6 +67,8 @@ class Configuration
      */
     protected $accessToken = '';
 
+    protected $apiKey = '';
+
     /**
      * Boolean format for query string
      *
@@ -135,7 +137,7 @@ class Configuration
      * Sets API key
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $key              API key or token
+     * @param string $key API key or token
      *
      * @return $this
      */
@@ -161,7 +163,7 @@ class Configuration
      * Sets the prefix for API key (e.g. Bearer)
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $prefix           API key prefix, e.g. Bearer
+     * @param string $prefix API key prefix, e.g. Bearer
      *
      * @return $this
      */
@@ -197,6 +199,19 @@ class Configuration
     }
 
     /**
+     * Sets the api key for OAuth
+     *
+     * @param string $apiKey Api Key for OAuth
+     *
+     * @return $this
+     */
+    public function setApiAuthKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+        return $this;
+    }
+
+    /**
      * Gets the access token for OAuth
      *
      * @return string Access token for OAuth
@@ -204,6 +219,16 @@ class Configuration
     public function getAccessToken()
     {
         return $this->accessToken;
+    }
+
+    /**
+     * Gets the access token for OAuth
+     *
+     * @return string Access token for OAuth
+     */
+    public function getApiAuthKey()
+    {
+        return $this->apiKey;
     }
 
     /**
@@ -304,8 +329,8 @@ class Configuration
      *
      * @param string $userAgent the user agent of the api client
      *
-     * @throws \InvalidArgumentException
      * @return $this
+     * @throws \InvalidArgumentException
      */
     public function setUserAgent($userAgent)
     {
@@ -429,7 +454,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (YandexMarketApi) Debug Report:' . PHP_EOL;
+        $report = 'PHP SDK (YandexMarketApi) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
         $report .= '    The version of the OpenAPI document: LATEST' . PHP_EOL;
@@ -441,7 +466,7 @@ class Configuration
     /**
      * Get API key (with prefix if set)
      *
-     * @param  string $apiKeyIdentifier name of apikey
+     * @param string $apiKeyIdentifier name of apikey
      *
      * @return null|string API key with the prefix
      */
@@ -479,13 +504,13 @@ class Configuration
     }
 
     /**
-    * Returns URL based on host settings, index and variables
-    *
-    * @param array      $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
-    * @param int        $hostIndex    index of the host settings
-    * @param array|null $variables    hash of variable and the corresponding value (optional)
-    * @return string URL based on host settings
-    */
+     * Returns URL based on host settings, index and variables
+     *
+     * @param array $hostSettings array of host settings, generated from getHostSettings() or equivalent from the API clients
+     * @param int $hostIndex index of the host settings
+     * @param array|null $variables hash of variable and the corresponding value (optional)
+     * @return string URL based on host settings
+     */
     public static function getHostString(array $hostsSettings, $hostIndex, array $variables = null)
     {
         if (null === $variables) {
@@ -494,7 +519,7 @@ class Configuration
 
         // check array index out of bound
         if ($hostIndex < 0 || $hostIndex >= count($hostsSettings)) {
-            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than ".count($hostsSettings));
+            throw new \InvalidArgumentException("Invalid index $hostIndex when selecting the host. Must be less than " . count($hostsSettings));
         }
 
         $host = $hostsSettings[$hostIndex];
@@ -504,13 +529,13 @@ class Configuration
         foreach ($host["variables"] ?? [] as $name => $variable) {
             if (array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
                 if (!isset($variable['enum_values']) || in_array($variables[$name], $variable["enum_values"], true)) { // check to see if the value is in the enum
-                    $url = str_replace("{".$name."}", $variables[$name], $url);
+                    $url = str_replace("{" . $name . "}", $variables[$name], $url);
                 } else {
-                    throw new \InvalidArgumentException("The variable `$name` in the host URL has invalid value ".$variables[$name].". Must be ".join(',', $variable["enum_values"]).".");
+                    throw new \InvalidArgumentException("The variable `$name` in the host URL has invalid value " . $variables[$name] . ". Must be " . join(',', $variable["enum_values"]) . ".");
                 }
             } else {
                 // use default value
-                $url = str_replace("{".$name."}", $variable["default_value"], $url);
+                $url = str_replace("{" . $name . "}", $variable["default_value"], $url);
             }
         }
 
@@ -520,7 +545,7 @@ class Configuration
     /**
      * Returns URL based on the index and variables
      *
-     * @param int        $index     index of the host settings
+     * @param int $index index of the host settings
      * @param array|null $variables hash of variable and the corresponding value (optional)
      * @return string URL based on host settings
      */

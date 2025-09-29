@@ -579,8 +579,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
@@ -1046,8 +1050,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
@@ -1513,8 +1521,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
@@ -1981,8 +1993,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
@@ -2425,8 +2441,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
@@ -2892,8 +2912,12 @@ class BusinessOfferMappingsApi
         }
 
         // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
+       if (!empty($this->config->getAccessToken())) {
             $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        if (!empty($this->config->getAuthApiKey())) {
+            $headers['Api-Key'] =  $this->config->getAuthApiKey();
         }
 
         $defaultHeaders = [];
