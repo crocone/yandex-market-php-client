@@ -56,6 +56,9 @@ class OrderVatType
     public const VAT_20_120 = 'VAT_20_120';
 
     public const VAT_18 = 'VAT_18';
+    public const VAT_12 = 'VAT_12';
+    public const VAT_05 = 'VAT_05';
+    public const VAT_07 = 'VAT_07';
 
     public const VAT_18_118 = 'VAT_18_118';
 
@@ -76,6 +79,9 @@ class OrderVatType
             self::VAT_20_120,
             self::VAT_18,
             self::VAT_18_118,
+            self::VAT_12,
+            self::VAT_05,
+            self::VAT_07,
             self::UNKNOWN_VALUE
         ];
     }
